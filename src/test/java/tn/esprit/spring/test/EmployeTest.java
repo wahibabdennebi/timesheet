@@ -1,9 +1,11 @@
 package tn.esprit.spring.test;
 
+import static org.junit.Assert.assertNotEquals;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
+import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -11,11 +13,13 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import tn.esprit.spring.entities.Contrat;
 import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
+import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.Role;
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
@@ -31,107 +35,51 @@ public class EmployeTest {
 	IEmployeService empservice;
 	@Autowired
 	IEntrepriseService entservice;
-	@Test
-	public void ajouterEmployeTest(){
-		Role role =Role.INGENIEUR;
-		Employe emp=new Employe("Neji", "amine", "amine@mail", true, role);
-		try{
-			l.info("Test");
-			
-			l.info("l'id est "+ empservice.ajouterEmploye(emp));
-		}
-		catch(Exception e){
-			l.error("Erreur dans ajouterEmploye : "+e);
-		}
-	}
-		
-		@Test
-		public void mettreAjourEmailByEmployeId(){
-			empservice.mettreAjourEmailByEmployeId("inesneji", 1);
-		}
-		@Test
-		public void ajouterDepartementTest(){
-			//Departement dep=new Departement("Finance");
-			Departement dep=new Departement("Informatique");
-			entservice.ajouterDepartement(dep);
-		}
-		@Test
-		public void affecterEmployeADepartementTest(){
-			//empservice.affecterEmployeADepartement(1, 1);
-			empservice.affecterEmployeADepartement(1, 1);
-			
-		}
-		@Test
-		public void getEmployePrenomByIdTest(){
-			try{
-				l.info("Le prenom est : "+empservice.getEmployePrenomById(5));
-			}
-			catch(Exception e){
-				l.error("Erreur dans getEmployePrenomByIdTest : "+e);
-			}
-			
-		}
-		@Test
-		public void desaffecterEmployeDuDepartemenTest(){
-			
-			empservice.desaffecterEmployeDuDepartement(1, 1);
-		
-		}
-		@Test
-		public void ajouterContratTest() throws ParseException{
-			
-			SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yy");
-			//Date date = dateFormat.parse("03-11-2021");
-			//Contrat cnt=new Contrat(date, "contrat", 1500);
-			Date date = dateFormat.parse("04-11-2021");
-			Contrat cnt=new Contrat(date, "contrat1", 2500);
-			//Contrat cnt=new Contrat(date, "contrat2", 4500);
-			try{
-				l.info("Contrat : id : "+empservice.ajouterContrat(cnt));
-			}
-			catch(Exception e){
-				l.error("Erreur dans ajouterContrat : "+e);
-			}
-			
-			
-		}
-		@Test
-		public void affecterContratAEmployeTest(){
-			empservice.affecterContratAEmploye(9, 1);
-		}
-		@Test
-		public void deleteEmployeByIdTest(){
-			empservice.deleteEmployeById(9);
-		}
-		//@Test
-		//public void deleteContratByIdTest(){
-			//empservice.deleteContratById(6);}
-		
+	
+		@Order(1)
 		@Test
 		public void getNombreEmployeJPQLTest(){
-			try{
-				l.info("Nombre des employes : "+empservice.getNombreEmployeJPQL());
-			}
-			catch(Exception e){
-				l.error("Erreur dans getNombreEmployeJPQL : "+e);
-			}
+			
+			assertNotEquals(0, empservice.getNombreEmployeJPQL());
+			l.info("Employe number != 0");
 			
 		}
+		@Order(2)
+		@Test
+		public void getAllEmployeNamesJPQLTest(){
+			List<String> names=empservice.getAllEmployeNamesJPQL();
+			assertNotEquals(names.size(),0);
+			l.info("names "+names);
+			
+		}
+		@Order(3)
 		@Test
 		public void getAllEmployesTest(){
-			try{
-				l.info("Employes : "+empservice.getAllEmployes());
-			}
-			catch(Exception e){
-				l.error("Erreur dans getAllEmployesTest : "+e);
-			}
+			List<Employe>employes = empservice.getAllEmployes();
+	    	assertNotEquals(employes.size(),0);
+	    	l.info("Employees List  >0 ,"+employes.size());
 			
 		}
+		@Order(4)
+		@Test
+		public void getAllEmployeByEntrepriseTest(){
+			Entreprise ent= entservice.getEntrepriseById(1);
+			List<Employe>employes = empservice.getAllEmployeByEntreprise(ent);
+			assertNotEquals(employes.size(),0);
+	    	l.info("Employees List  >0 ,"+employes.size());
+		}
+		@Order(5)
+		@Test
+		public void mettreAjourEmailByEmployeIdJPQLTest(){
+			empservice.mettreAjourEmailByEmployeIdJPQL("m@mail.com", 7);
+		}
+		//@Order(8)
 		//@Test
 		//public void deleteAllContratJPQLTest(){
 			
 			//empservice.deleteAllContratJPQL();
 		//}
+		@Order(6)
 		@Test
 		public void getSalaireByEmployeIdJPQLTest(){
 			try{
@@ -141,16 +89,21 @@ public class EmployeTest {
 				l.error("Erreur dans getSalaireByEmployeIdJPQLTes : "+e);
 			}
 		}
+		@Order(7)
 		@Test
 		public void getSalaireMoyenByDepartementIdTest(){
 			try{
-				l.info("Salary by Department : "+empservice.getSalaireMoyenByDepartementId(1));
-			}
+			
+			l.info("Salary by Department : "+empservice.getSalaireMoyenByDepartementId(1));}
+			
+			
 			catch(Exception e){
 				l.error("Erreur dans getSalaireMoyenByDepartementIdTest : "+e);
 			}
 			
+			
 		}
+		
 		
 
 	
