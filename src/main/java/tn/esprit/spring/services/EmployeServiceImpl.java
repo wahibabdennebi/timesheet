@@ -65,11 +65,10 @@ public class EmployeServiceImpl implements IEmployeService {
 		return employeRepository.getSalaireMoyenByDepartementId(departementId);
 	}
 	
-	
-	
 
 	public List<Employe> getAllEmployes() {
 				return (List<Employe>) employeRepository.findAll();
 	}
+	
 
 }
