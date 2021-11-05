@@ -1,5 +1,7 @@
 package tn.esprit.spring.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +20,11 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	
 	
 	public Entreprise getEntrepriseById(int entrepriseId) {
-		return entrepriseRepoistory.findById(entrepriseId).get();
+		  Optional<Entreprise> entrepriseOptional = entrepriseRepoistory.findById(entrepriseId);
+	        if (entrepriseOptional.isPresent()) {
+	            return entrepriseOptional.get();
+	        }
+	        else return null;
 			
 		
 		 

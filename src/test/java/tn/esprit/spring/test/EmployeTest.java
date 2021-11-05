@@ -1,10 +1,8 @@
 package tn.esprit.spring.test;
 
 import static org.junit.Assert.assertNotEquals;
+import static org.junit.Assert.assertTrue;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -16,11 +14,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.core.annotation.Order;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import tn.esprit.spring.entities.Contrat;
-import tn.esprit.spring.entities.Departement;
 import tn.esprit.spring.entities.Employe;
 import tn.esprit.spring.entities.Entreprise;
-import tn.esprit.spring.entities.Role;
+
 import tn.esprit.spring.services.IEmployeService;
 import tn.esprit.spring.services.IEntrepriseService;
 
@@ -58,20 +54,34 @@ public class EmployeTest {
 			List<Employe>employes = empservice.getAllEmployes();
 	    	assertNotEquals(employes.size(),0);
 	    	l.info("Employees List  >0 ,"+employes.size());
+	    	l.info("Employees  ,"+employes);
 			
 		}
 		@Order(4)
 		@Test
 		public void getAllEmployeByEntrepriseTest(){
+			try{
 			Entreprise ent= entservice.getEntrepriseById(1);
 			List<Employe>employes = empservice.getAllEmployeByEntreprise(ent);
 			assertNotEquals(employes.size(),0);
 	    	l.info("Employees List  >0 ,"+employes.size());
+	    	l.info("Employees  ,"+employes);}
+			catch(Exception e){
+				l.error("Erreur dans getAllEmployeByEntrepriseTest : "+e);
+			}
 		}
 		@Order(5)
 		@Test
 		public void mettreAjourEmailByEmployeIdJPQLTest(){
+			try{
 			empservice.mettreAjourEmailByEmployeIdJPQL("m@mail.com", 7);
+			
+			l.info("Update");}
+			catch(Exception e){
+				l.error("Erreur dans mettreAjourEmailByEmployeIdJPQLTest : "+e);
+			}
+			
+			
 		}
 		//@Order(8)
 		//@Test
@@ -83,7 +93,9 @@ public class EmployeTest {
 		@Test
 		public void getSalaireByEmployeIdJPQLTest(){
 			try{
+				
 				l.info("Salaire : "+empservice.getSalaireByEmployeIdJPQL(1));
+				
 			}
 			catch(Exception e){
 				l.error("Erreur dans getSalaireByEmployeIdJPQLTes : "+e);
