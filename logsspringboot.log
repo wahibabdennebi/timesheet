@@ -5,9 +5,6 @@
 2020-03-04 14:30:02.892  INFO 32 --- [main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$d262ed6b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
 2020-03-04 14:30:04.488  INFO 32 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
 2020-03-04 14:30:06.060  INFO 32 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2020-03-04 14:30:06.558  INFO 32 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
-	name: default
-	...]
 2020-03-04 14:30:06.798  INFO 32 --- [main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.9.Final}
 2020-03-04 14:30:06.798  INFO 32 --- [main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
 2020-03-04 14:30:07.508  INFO 32 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
