@@ -31,11 +31,11 @@ public class EntrepriseTest {
 		ie.ajouterDepartement(d);
 	}
 
-	@Test
-	public void affecterDepartementAEntrepriseTest() {
-		
-		ie.affecterDepartementAEntreprise(13,5);
-	}
+//	@Test
+//	public void affecterDepartementAEntrepriseTest() {
+//		
+//		ie.affecterDepartementAEntreprise(13,5);
+//	}
 
 //	@Test
 //	public void getAllDepartementsNamesByEntreprise() {
