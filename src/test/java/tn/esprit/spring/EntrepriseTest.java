@@ -24,12 +24,12 @@ public class EntrepriseTest {
 		ie.ajouterEntreprise(e);
 	}
 
-	@Test
-	public void ajouterDepartementTest() {
-		Departement d = new Departement("test");
-		Assert.assertNotEquals(0, ie.ajouterDepartement(d));
-		ie.ajouterDepartement(d);
-	}
+//	@Test
+//	public void ajouterDepartementTest() {
+//		Departement d = new Departement("test");
+//		Assert.assertNotEquals(0, ie.ajouterDepartement(d));
+//		ie.ajouterDepartement(d);
+//	}
 
 //	@Test
 //	public void affecterDepartementAEntrepriseTest() {
