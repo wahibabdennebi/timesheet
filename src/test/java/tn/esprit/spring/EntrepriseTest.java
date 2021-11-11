@@ -17,32 +17,62 @@ public class EntrepriseTest {
 	@Autowired
 	IEntrepriseService ie;
 
+
+
 	@Test
-	public void ajouterEntrepriseTest() {
-		Entreprise e = new Entreprise("test", "testtest");
-		Assert.assertNotEquals(0, ie.ajouterEntreprise(e));
-		ie.ajouterEntreprise(e);
+	public void ajouterDepartementTest() {
+		Departement d = new Departement("test");
+		Assert.assertNotEquals(0, ie.ajouterDepartement(d));
+		ie.ajouterDepartement(d);
 	}
 
-//	@Test
-//	public void ajouterDepartementTest() {
-//		Departement d = new Departement("test");
-//		Assert.assertNotEquals(0, ie.ajouterDepartement(d));
-//		ie.ajouterDepartement(d);
-//	}
+	@Test
+	public void affecterDepartementAEntrepriseTest() {
+		
+		ie.affecterDepartementAEntreprise(13,5);
+	}
 
-//	@Test
-//	public void affecterDepartementAEntrepriseTest() {
-//		
-//		ie.affecterDepartementAEntreprise(13,5);
-//	}
+	@Test
+	public void getAllDepartementsNamesByEntreprise() {
+		Assert.assertNotEquals(0, ie.getAllDepartementsNamesByEntreprise(5).size());
+	}
 
-//	@Test
-//	public void getAllDepartementsNamesByEntreprise() {
-//		Assert.assertNotEquals(0, ie.getAllDepartementsNamesByEntreprise(5).size());
-//	}
 
-//	@Test
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//	@Test
 //	public void deleteEntrepriseById() {
 //		ie.deleteEntrepriseById(4);
 //		
@@ -53,7 +83,12 @@ public class EntrepriseTest {
 //	public void deleteDepartementById() {
 //		ie.deleteDepartementById(14);
 //	}
-
+//	@Test
+//	public void ajouterEntrepriseTest() {
+//		Entreprise e = new Entreprise("test", "testtest");
+//		Assert.assertNotEquals(0, ie.ajouterEntreprise(e));
+//		ie.ajouterEntreprise(e);
+//	}
 	
 
 }
