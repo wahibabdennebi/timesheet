@@ -35,12 +35,12 @@ public class EntrepriseTest {
 		Assert.assertNotEquals(0, ie.deleteEntrepriseById(ie.ajouterEntreprise(e)));
 		
 	}
-//	@Test
-//	public void getEntrepriseById () {
-//		Entreprise e = new Entreprise("test", "testtest");
-//		ie.ajouterEntreprise(e);
-//		Assert.assertEquals("test", ie.getEntrepriseById(ie.ajouterEntreprise(e)).getName());
-//	}
+	@Test
+	public void getEntrepriseById () {
+		Entreprise e = new Entreprise("test", "testtest");
+		ie.ajouterEntreprise(e);
+		Assert.assertEquals("test", ie.getEntrepriseById(ie.ajouterEntreprise(e)).getName());
+	}
 
 
 
