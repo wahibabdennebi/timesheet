@@ -35,7 +35,9 @@ public class EntrepriseTest {
 	@Test
 	public void getAllDepartementsNamesByEntreprise() {
 		Assert.assertNotEquals(0, ie.getAllDepartementsNamesByEntreprise(5).size());
+		
 	}
+	//dhiaaa
 
 
 	
