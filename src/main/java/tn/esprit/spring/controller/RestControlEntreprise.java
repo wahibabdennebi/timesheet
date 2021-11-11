@@ -1,7 +1,7 @@
 
 package tn.esprit.spring.controller;
 
-import java.util.List;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,9 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-
-import tn.esprit.spring.entities.Departement;
-import tn.esprit.spring.entities.DepartemntDTO;
 import tn.esprit.spring.entities.Entreprise;
 import tn.esprit.spring.entities.EntrepriseDTO;
 import tn.esprit.spring.services.IEntrepriseService;
@@ -65,29 +62,5 @@ public class RestControlEntreprise {
 		return ientrepriseservice.getEntrepriseById(entrepriseId);
 	}
     
-    // http://localhost:8081/SpringMVC/servlet/ajouterDepartement
- 
 
- 	@PostMapping("/ajouterDepartement")
- 	@ResponseBody
-	public int ajouterDepartement(@RequestBody DepartemntDTO dep) {
- 		Departement de=new Departement();
- 		de.setName(dep.getName());
-		return ientrepriseservice.ajouterDepartement(de);
-	}
-	
- 	 // http://localhost:8081/SpringMVC/servlet/getAllDepartementsNamesByEntreprise/1
-    @GetMapping(value = "getAllDepartementsNamesByEntreprise/{identreprise}")
-    @ResponseBody
-	public List<String> getAllDepartementsNamesByEntreprise(@PathVariable("identreprise") int entrepriseId) {
-		return ientrepriseservice.getAllDepartementsNamesByEntreprise(entrepriseId);
-	}
-
-    // URL : http://localhost:8081/SpringMVC/servlet/deleteDepartementById/3
-    @DeleteMapping("/deleteDepartementById/{iddept}") 
-	@ResponseBody 
-	public void deleteDepartementById(@PathVariable("iddept") int depId) {
-		ientrepriseservice.deleteDepartementById(depId);
-
-	}
 }
