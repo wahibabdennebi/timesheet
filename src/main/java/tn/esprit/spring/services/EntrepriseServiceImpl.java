@@ -53,7 +53,7 @@ public class EntrepriseServiceImpl implements IEntrepriseService {
 	public int deleteEntrepriseById(int entrepriseId) {
 		try {
 			l.info("in deleteEntrepriseById");
-			entrepriseRepoistory.delete(entrepriseRepoistory.findById(entrepriseId).orElse(null));
+			entrepriseRepoistory.deleteById(entrepriseId);
 		} catch (Exception e) {
 			l.error("erreur dans deleteEntrepriseById");
 		}
